@@ -1,0 +1,3 @@
+# ignore test coverage output artifacts
+*/c.out
+*/coverage.html
