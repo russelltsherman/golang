@@ -9,6 +9,11 @@ test:
 	go test -v ./...
 .PHONY: test
 
+test/benchmark:
+	go test -v ./... -bench=.
+.PHONY: test/benchmark
+
+
 test/coverage:
 	go test -v ./... -cover -coverprofile=c.out
 	go tool cover -html=c.out -o coverage.html

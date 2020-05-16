@@ -1,7 +1,7 @@
 package sort
 
-// BubbleSort - sorts slice of int using bubble sort algorythm
-func BubbleSort(elements []int) {
+// Bubble - sorts slice of int using bubble sort algorythm
+func Bubble(elements []int) {
 	sorting := true
 	for sorting {
 		sorting = false
