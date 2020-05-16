@@ -2,79 +2,76 @@ package patterns
 
 import (
 	"fmt"
-	"math/rand"
-	"os"
-	"time"
 )
 
-type GameState interface {
-	executeState(*GameContext) bool
+// Machine defines a machine which can be swwitched on and off.
+type Machine struct {
+	current State
 }
 
-type GameContext struct {
-	SecretNumber int
-	Retries      int
-	Won          bool
-	Next         GameState
+// NewMachine creates a new machine.
+func NewMachine() *Machine {
+	fmt.Fprintf(outputWriter, "Machine is ready.\n")
+	return &Machine{NewOFF()}
 }
 
-type StartState struct{}
-
-func (s *StartState) executeState(c *GameContext) bool {
-	c.Next = &AskState{}
-
-	rand.Seed(time.Now().UnixNano())
-	c.SecretNumber = rand.Intn(10)
-	fmt.Println("Introduce a number a number of retries to set the difficulty:")
-	fmt.Fscanf(os.Stdin, "%d\n", &c.Retries)
-
-	return true
+// setCurrent sets the current state of the machine.
+func (m *Machine) setCurrent(s State) {
+	m.current = s
 }
 
-type FinishState struct{}
-
-func (f *FinishState) executeState(c *GameContext) bool {
-	if c.Won {
-		c.Next = &WinState{}
-	} else {
-		c.Next = &LoseState{}
-	}
-
-	return true
+// On pushes the on button.
+func (m *Machine) On() {
+	m.current.On(m)
 }
 
-type AskState struct{}
-
-func (a *AskState) executeState(c *GameContext) bool {
-	fmt.Printf("Introduce a number between 0 and 10, you have %d tries left\n", c.Retries)
-
-	var n int
-	fmt.Fscanf(os.Stdin, "%d", &n)
-	c.Retries = c.Retries - 1
-
-	if n == c.SecretNumber {
-		c.Won = true
-		c.Next = &FinishState{}
-	}
-
-	if c.Retries == 0 {
-		c.Next = &FinishState{}
-	}
-
-	return true
+// Off pushes the off button.
+func (m *Machine) Off() {
+	m.current.Off(m)
 }
 
-type WinState struct{}
-
-func (w *WinState) executeState(c *GameContext) bool {
-	println("Congrats, you won")
-
-	return false
+// State describes the internal state of the machine.
+type State interface {
+	On(m *Machine)
+	Off(m *Machine)
 }
 
-type LoseState struct{}
+// ON describes the on button state.
+type ON struct {
+}
 
-func (l *LoseState) executeState(c *GameContext) bool {
-	fmt.Printf("You loose. The correct number was: %d\n", c.SecretNumber)
-	return false
+// NewON creates a new ON state.
+func NewON() State {
+	return &ON{}
+}
+
+// On does nothing.
+func (o *ON) On(m *Machine) {
+	fmt.Fprintf(outputWriter, "   already ON\n")
+}
+
+// Off switches the state from on to off.
+func (o *ON) Off(m *Machine) {
+	fmt.Fprintf(outputWriter, "   going from ON to OFF\n")
+	m.setCurrent(NewOFF())
+}
+
+// OFF describes the off button state.
+type OFF struct {
+}
+
+// NewOFF creates a new OFF state.
+func NewOFF() State {
+	return &OFF{}
+}
+
+// On switches the state from off to on.
+func (o *OFF) On(m *Machine) {
+	fmt.Fprintf(outputWriter, "   going from OFF to ON\n")
+	m.setCurrent(NewON())
+}
+
+// Off does nothing.
+func (o *OFF) Off(m *Machine) {
+	fmt.Fprintf(outputWriter, "   already OFF\n")
 }

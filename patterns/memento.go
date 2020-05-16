@@ -1,42 +1,45 @@
 package patterns
-
-import "fmt"
-
-type memento struct {
-	state State
+// Memento stores the state of the Number.
+type Memento struct {
+	state int
 }
 
-type State struct {
-	Description string
+// NewMemento creates a new memento.
+func NewMemento(value int) *Memento {
+	return &Memento{value}
 }
 
-//--------------------------------------------------------------------
-
-type originator struct {
-	state State
+// Number represents an integer which can be operated on.
+type Number struct {
+	value int
 }
 
-func (o *originator) NewMemento() memento {
-	return memento{state: o.state}
+// NewNumber creates a new Number.
+func NewNumber(value int) *Number {
+	return &Number{value}
 }
 
-func (o *originator) ExtractAndStoreState(m memento) {
-	o.state = m.state
+// Dubble doubles the value of the number.
+func (n *Number) Dubble() {
+	n.value = 2 * n.value
 }
 
-//--------------------------------------------------------------------
-
-type careTaker struct {
-	mementoList []memento
+// Half halves the value of the number.
+func (n *Number) Half() {
+	n.value /= 2
 }
 
-func (c *careTaker) Add(m memento) {
-	c.mementoList = append(c.mementoList, m)
+// Value returns the value of the number.
+func (n *Number) Value() int {
+	return n.value
 }
 
-func (c *careTaker) Memento(i int) (memento, error) {
-	if len(c.mementoList) < i || i < 0 {
-		return memento{}, fmt.Errorf("Index not found\n")
-	}
-	return c.mementoList[i], nil
+// CreateMemento creates a Memento with the current state of the number.
+func (n *Number) CreateMemento() *Memento {
+	return NewMemento(n.value)
+}
+
+// ReinstateMemento reinstates the value of the Number to the value of the memento.
+func (n *Number) ReinstateMemento(memento *Memento) {
+	n.value = memento.state
 }
