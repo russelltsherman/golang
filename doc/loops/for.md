@@ -1,5 +1,16 @@
 # Golang For loop
 
+Go has only one looping construct, the for loop.
+
+The basic for loop has three components separated by semicolons:
+
+the init statement: executed before the first iteration
+the condition expression: evaluated before every iteration
+the post statement: executed at the end of every iteration
+The init statement will often be a short variable declaration, and the variables declared there are visible only in the scope of the for statement.
+
+The loop will stop iterating once the boolean condition evaluates to false.
+
 ## A simple for loop
 
 It is similar that we use in other programming languages like C, C++, Java, C#, etc.
@@ -79,5 +90,19 @@ for x < 8 {
   }
   fmt.Printf("value is: %d\n", x);
   x++;
+}
+```
+
+## Range
+
+The range form of the for loop iterates over a slice or map.
+
+When ranging over a slice, two values are returned for each iteration. The first is the index, and the second is a copy of the element at that index.
+
+```go
+var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+for i, v := range pow {
+  fmt.Printf("2**%d = %d\n", i, v)
 }
 ```

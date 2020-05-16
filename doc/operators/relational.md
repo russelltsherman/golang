@@ -4,13 +4,13 @@ Relational operators are used for comparison of two values. Let’s see them one
 
 | Operator | Description         |
 | -------- | ------------------- |
-| ==       | is equal            |
-| !=       | not equal           |
-| <>       | not equal           |
-| >        | is greater          |
-| <        | is less             |
-| >=       | is greater or equal |
-| <=       | is less or equal    |
+| `==`     | is equal            |
+| `!=`     | not equal           |
+| `<>`     | not equal           |
+| `>`      | is greater          |
+| `<`      | is less             |
+| `>=`     | is greater or equal |
+| `<=`     | is less or equal    |
 
 ## is equal
 

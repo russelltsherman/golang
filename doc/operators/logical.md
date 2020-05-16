@@ -4,9 +4,9 @@ They are used to combine two or more conditions/constraints or to complement the
 
 | Operator | Description |
 | -------- | ----------- |
-| and      | Logical AND |
-| or       | Logical OR  |
-| not      | Logical NOT |
+| `&&`     | Logical AND |
+| `||`     | Logical OR  |
+| `!`      | Logical NOT |
 
 ## Logical AND
 

@@ -4,12 +4,12 @@ In Go language, there are 6 bitwise operators which work at bit level or used to
 
 | Operator | Description        |
 | -------- | ------------------ |
-| &        | Binary AND         |
-| \|       | Binary OR          |
-| ^        | Binary XOR         |
-| ~        | Binary Complement  |
-| <<       | Binary Left Shift  |
-| >>       | Binary Right Shift |
+| `&`      | bitwise AND        |
+| `|`      | bitwise OR         |
+| `^`      | bitwise XOR        |
+| `&^`     | bitwise AND NOT    |
+| `<<`     | Binary Left Shift  |
+| `>>`     | Binary Right Shift |
 
 ## bitwise AND
 
@@ -25,6 +25,8 @@ The result of OR is 1 any of the two bits is 1.
 
 Takes two numbers as operands and does XOR on every bit of two numbers.
 The result of XOR is 1 if the two bits are different.
+
+## bitwise AND NOT
 
 ## left shift
 

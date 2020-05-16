@@ -11,10 +11,10 @@ func main() {
 
     // variables
    str1 := "GeeksforGeeks"
-   str2:= "geeksForgeeks"
-   str3:= "GeeksforGeeks"
-   result1:= str1 == str2
-   result2:= str1 == str3
+   str2 := "geeksForgeeks"
+   str3 := "GeeksforGeeks"
+   result1 := str1 == str2
+   result2 := str1 == str3
 
    // Display the result
    fmt.Println( result1)

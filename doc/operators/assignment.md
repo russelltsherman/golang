@@ -6,17 +6,19 @@ The value on the right side must be of the same data-type of the variable on the
 
 Different types of assignment operators are shown below:
 
-| Operator | Description            |
-| -------- | ---------------------- |
-| =        | Simple Assignment      |
-| +=       | Add Assignment         |
-| -=       | Subtract Assignment    |
-| \*=      | Multiply Assignment    |
-| /=       | Divide Assignment      |
-| %=       | Modulus Assignment     |
-| &=       | Bitwise AND Assignment |
-| ^=       | Bitwise Exclusive OR   |
-| \|=      | Bitwise Inclusive OR   |
+| Operator | Description                |
+| -------- | -------------------------- |
+| `=`      | Simple Assignment          |
+| `+=`     | Add Assignment             |
+| `-=`     | Subtract Assignment        |
+| `*=`     | Multiply Assignment        |
+| `/=`     | Divide Assignment          |
+| `%=`     | Modulus Assignment         |
+| `<<=`    | Left shift AND assignment  |
+| `>>=`    | Right shift AND assignment |
+| `&=`     | Bitwise AND Assignment     |
+| `^=`     | Bitwise Exclusive OR       |
+| `|=`     | Bitwise Inclusive OR       |
 
 ## Simple Assignment
 

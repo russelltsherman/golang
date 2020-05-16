@@ -2,33 +2,43 @@
 
 These are used to perform arithmetic/mathematical operations on operands in Go language:
 
-| Operator | Description    |
-| -------- | -------------- |
-| +        | Addition       |
-| -        | Subtraction    |
-| \*       | Multiplication |
-| /        | Division       |
-| %        | Modulus        |
+| Operator | Description         |
+| -------- | ------------------- |
+| `+`      | Addition            |
+| `-`      | Subtraction         |
+| `*`      | Multiplication      |
+| `/`      | Division            |
+| `%`      | Modulus             |
+| `++`     | Increment operator. |
+| `--`     | Decrement operator. |
 
 ## Addition
 
-The ‘+’ operator adds two operands. For example, x+y.
+The `+` operator adds two operands.
 
 ## Subtraction
 
-The ‘-‘ operator subtracts two operands. For example, x-y.
+The `-` operator subtracts two operands.
 
 ## Multiplication
 
-The ‘*’ operator multiplies two operands. For example, x*y.
+The `*` operator multiplies two operands.
 
 ## Division
 
-The ‘/’ operator divides the first operand by the second. For example, x/y.
+The `/` operator divides the first operand by the second.
 
 ## Modulus
 
-The ‘%’ operator returns the remainder when first operand is divided by the second. For example, x%y.
+The `%` operator returns the remainder when first operand is divided by the second.
+
+## Increment
+
+The `++` operator It increases the integer value by one.
+
+## Decrement
+
+The `--` operator It decreases the integer value by one.
 
 ## Note
 
