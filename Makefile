@@ -6,16 +6,27 @@ doc:
 .PHONY: doc
 
 test:
-	go test -v ./...
+	go test -v -tags all_tests ./...
 .PHONY: test
 
-test/benchmark:
-	go test -v ./... -bench=.
-.PHONY: test/benchmark
+test/algo:
+	go test -v -tags algorythm_tests ./...
+.PHONY: test/algo
 
+test/data:
+	go test -v -tags datastructure_tests ./...
+.PHONY: test/data
 
-test/coverage:
-	go test -v ./... -cover -coverprofile=c.out
+test/patt:
+	go test -v -tags pattern_tests ./...
+.PHONY: test/patt
+
+test/bench:
+	go test -v -tags all_tests ./... -bench=.
+.PHONY: test/bench
+
+test/cover:
+	go test -v -tags all_tests ./... -cover -coverprofile=c.out
 	go tool cover -html=c.out -o coverage.html
 	open coverage.html
-.PHONY: test/coverage
+.PHONY: test/cover

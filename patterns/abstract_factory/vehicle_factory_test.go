@@ -1,3 +1,5 @@
+// +build all_tests pattern_tests
+
 package abstract_factory
 
 import "testing"

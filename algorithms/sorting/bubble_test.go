@@ -1,3 +1,5 @@
+// +build all_tests algorythm_tests
+
 package sort
 
 import (
