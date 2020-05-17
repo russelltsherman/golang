@@ -26,7 +26,7 @@ test/bench:
 .PHONY: test/bench
 
 test/cover:
-	go test -v -tags all_tests ./... -cover -coverprofile=c.out
-	go tool cover -html=c.out -o coverage.html
+	go test -v -tags all_tests ./... -cover -coverprofile=coverage.out
+	go tool cover -html=coverage.out -o coverage.html
 	open coverage.html
 .PHONY: test/cover

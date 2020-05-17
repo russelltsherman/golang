@@ -4,32 +4,34 @@ package search
 
 import (
 	"testing"
+
+	. "gopkg.in/check.v1"
 )
 
-type linearTest struct {
-	item     int
-	expected bool
-}
+func TestLinearSearch(t *testing.T) { TestingT(t) }
 
-var linearTests = []linearTest{
-	{
-		item:     63,
-		expected: true,
-	},
-	{
-		item:     200,
-		expected: false,
-	},
-}
+type LinearSearchSuite struct{}
 
-func TestLinear(t *testing.T) {
+var _ = Suite(&LinearSearchSuite{})
+
+func (s *LinearSearchSuite) TestLinearSearch(c *C) {
+	specs := []struct {
+		item     int
+		expected bool
+	}{
+		{
+			item:     63,
+			expected: true,
+		},
+		{
+			item:     200,
+			expected: false,
+		},
+	}
 	items := []int{1, 2, 9, 20, 31, 45, 63, 70, 100}
 
-	for idx, spec := range linearTests {
+	for _, spec := range specs {
 		result := Linear(items, spec.item)
-
-		if result != spec.expected {
-			t.Errorf("[spec %d] expected to get %v; got %v", idx, spec.expected, result)
-		}
+		c.Assert(result, Equals, spec.expected)
 	}
 }

@@ -4,9 +4,11 @@ package search
 
 import (
 	"testing"
+
+	. "gopkg.in/check.v1"
 )
 
-func BenchmarkBinary(b *testing.B) {
+func BenchmarkBinarySearch(b *testing.B) {
 	items := []int{1, 2, 9, 20, 31, 45, 63, 70, 100}
 
 	for i := 0; i < b.N; i++ {
@@ -14,29 +16,32 @@ func BenchmarkBinary(b *testing.B) {
 	}
 }
 
-type binaryTest struct {
-	item     int
-	expected bool
-}
+// Hook up gocheck into the "go test" runner.
+func TestBinarySearch(t *testing.T) { TestingT(t) }
 
-var binaryTests = []binaryTest{
-	{
-		item:     63,
-		expected: true,
-	},
-	{
-		item:     200,
-		expected: false,
-	},
-}
+type BinarySearchSuite struct{}
 
-func TestBinary(t *testing.T) {
+var _ = Suite(&BinarySearchSuite{})
+
+func (s *BinarySearchSuite) TestBinarySearch(c *C) {
+	specs := []struct {
+		item     int
+		expected bool
+	}{
+		{
+			item:     63,
+			expected: true,
+		},
+		{
+			item:     200,
+			expected: false,
+		},
+	}
 	items := []int{1, 2, 9, 20, 31, 45, 63, 70, 100}
 
-	for idx, spec := range binaryTests {
+	for _, spec := range specs {
 		result := Binary(items, spec.item)
-		if result != spec.expected {
-			t.Errorf("[spec %d] expected to get %v; got %v", idx, spec.expected, result)
-		}
+		c.Assert(result, Equals, spec.expected)
 	}
+
 }
