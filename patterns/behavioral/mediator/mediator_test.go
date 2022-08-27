@@ -1,10 +1,17 @@
-// +build all_tests pattern_tests
+// //go:build all_tests || pattern_tests
 
 package patterns
 
+// import (
+// 	"bytes"
+// 	"testing"
+
+// 	"github.com/stretchr/testify/assert"
+// )
+
 // func TestMediator(t *testing.T) {
+// 	outputWriter := new(bytes.Buffer)
 // 	bufferOutputWriter := outputWriter
-// 	outputWriter = new(bytes.Buffer)
 // 	defer func() { outputWriter = bufferOutputWriter }()
 
 // 	mediator := NewMediator()

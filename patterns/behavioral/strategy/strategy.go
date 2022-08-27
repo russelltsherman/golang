@@ -2,6 +2,7 @@ package patterns
 
 import (
 	"fmt"
+	"os"
 )
 
 // Strategy defines the interface for the strategy to execute.
@@ -20,7 +21,7 @@ func NewStrategyA() Strategy {
 
 // Execute executes strategy A.
 func (s *strategyA) Execute() {
-	fmt.Fprintf(outputWriter, "executing strategy A\n")
+	fmt.Fprintf(os.Stdout, "executing strategy A\n")
 }
 
 // strategyB defines an implementation of a Strategy to execute.
@@ -34,7 +35,7 @@ func NewStrategyB() Strategy {
 
 // Execute executes strategy B.
 func (s *strategyB) Execute() {
-	fmt.Fprintf(outputWriter, "executing strategy B\n")
+	fmt.Fprintf(os.Stdout, "executing strategy B\n")
 }
 
 // Context defines a context for executing a strategy.

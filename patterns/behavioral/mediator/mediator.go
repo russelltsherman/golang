@@ -1,5 +1,10 @@
 package patterns
 
+import (
+	"fmt"
+	"os"
+)
+
 // WildStallion describes an interface for a Wild Stallion band member.
 type WildStallion interface {
 	SetMediator(mediator Mediator)
@@ -17,7 +22,7 @@ func (b *Bill) SetMediator(mediator Mediator) {
 
 // Respond responds.
 func (b *Bill) Respond() {
-	// fmt.Fprintf(outputWriter, "Bill: What?\n")
+	fmt.Fprintf(os.Stdout, "Bill: What?\n")
 	b.mediator.Communicate("Bill")
 }
 
@@ -33,13 +38,13 @@ func (t *Ted) SetMediator(mediator Mediator) {
 
 // Talk talks through mediator.
 func (t *Ted) Talk() {
-	// fmt.Fprintf(outputWriter, "Ted: Bill?\n")
+	fmt.Fprintf(os.Stdout, "Ted: Bill?\n")
 	t.mediator.Communicate("Ted")
 }
 
 // Respond responds.
 func (t *Ted) Respond() {
-	// fmt.Fprintf(outputWriter, "Ted: Strange things are afoot at the Circle K.\n")
+	fmt.Fprintf(os.Stdout, "Ted: Strange things are afoot at the Circle K.\n")
 }
 
 // Mediator describes the interface for communicating between Wild Stallion band members.

@@ -2,6 +2,7 @@ package patterns
 
 import (
 	"fmt"
+	"os"
 )
 
 // Machine defines a machine which can be swwitched on and off.
@@ -11,7 +12,7 @@ type Machine struct {
 
 // NewMachine creates a new machine.
 func NewMachine() *Machine {
-	fmt.Fprintf(outputWriter, "Machine is ready.\n")
+	fmt.Fprintf(os.Stdout, "Machine is ready.\n")
 	return &Machine{NewOFF()}
 }
 
@@ -47,12 +48,12 @@ func NewON() State {
 
 // On does nothing.
 func (o *ON) On(m *Machine) {
-	fmt.Fprintf(outputWriter, "   already ON\n")
+	fmt.Fprintf(os.Stdout, "   already ON\n")
 }
 
 // Off switches the state from on to off.
 func (o *ON) Off(m *Machine) {
-	fmt.Fprintf(outputWriter, "   going from ON to OFF\n")
+	fmt.Fprintf(os.Stdout, "   going from ON to OFF\n")
 	m.setCurrent(NewOFF())
 }
 
@@ -67,11 +68,11 @@ func NewOFF() State {
 
 // On switches the state from off to on.
 func (o *OFF) On(m *Machine) {
-	fmt.Fprintf(outputWriter, "   going from OFF to ON\n")
+	fmt.Fprintf(os.Stdout, "   going from OFF to ON\n")
 	m.setCurrent(NewON())
 }
 
 // Off does nothing.
 func (o *OFF) Off(m *Machine) {
-	fmt.Fprintf(outputWriter, "   already OFF\n")
+	fmt.Fprintf(os.Stdout, "   already OFF\n")
 }
