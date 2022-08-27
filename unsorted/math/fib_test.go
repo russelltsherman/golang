@@ -1,5 +1,3 @@
-// +build all_tests algorythm_tests
-
 package math
 
 import (

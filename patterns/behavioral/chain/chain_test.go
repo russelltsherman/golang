@@ -1,5 +1,3 @@
-//go:build all_tests || pattern_tests
-
 package patterns
 
 import (

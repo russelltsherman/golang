@@ -55,7 +55,6 @@ func main() {
     tmux send-keys -t foo.0 "clear" ENTER;
 
   `
-
 	<-time.After(1 * time.Second)
 	cmd2 := exec.Command("/bin/sh", "-c", tmuxLayout)
 	err := cmd2.Run()
