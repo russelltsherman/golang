@@ -1,6 +1,8 @@
-# Golang Slices
+# slices
 
 Slices are like references to arrays
+
+Slices are zero indexed
 
 A slice does not store any data, it just describes a section of an underlying array.
 
@@ -25,3 +27,10 @@ Other slices that share the same underlying array will see those changes.
  fmt.Println(a, b)
   fmt.Println(names)
 ```
+
+slice access
+
+ `var [ startIndexInclusive : endIndexNonInclusive ]`
+
+if `startIndexInclusive` is ommitted beginning of assumd
+if `endIndexNonInclusive` is ommitted end is assumed

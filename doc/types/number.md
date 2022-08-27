@@ -1,4 +1,4 @@
-# Golang Numbers
+# numbers
 
 In Go language, numbers are divided into three sub-categories that are:
 
@@ -21,7 +21,7 @@ The signed int is represented by int and the unsigned integer is represented by 
 | uint      | Both in and uint contain same size, either 32 or 64 bit.         |
 | rune      | It is a synonym of int32 and also represent Unicode code points. |
 | byte      | It is a synonym of int8 .                                        |
-| uintptr   | It is an unsigned integer type. Its width is not defined,        |
+| uintptr   | It is an unsigned integer type. Its width is not defined, |
 |           | but its can hold all the bits of a pointer value.                |
 
 ## Floating-Point Numbers

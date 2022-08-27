@@ -1,6 +1,10 @@
-# Golang Strings
+# strings
 
-The string data type represents a sequence of Unicode code points. Or in other words, we can say a string is a sequence of immutable bytes, means once a string is created you cannot change that string. A string may contain arbitrary data, including bytes with zero value in the human-readable form.
+The string data type represents a sequence of Unicode code points.
+
+Or in other words, we can say a string is a sequence of immutable bytes, means once a string is created you cannot change that string.
+
+A string may contain arbitrary data, including bytes with zero value in the human-readable form.
 
 ```go
 package main

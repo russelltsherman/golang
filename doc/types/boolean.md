@@ -1,4 +1,4 @@
-# Golang Booleans
+# booleans
 
 The boolean data type represents only one bit of information either true or false.
 The values of type boolean are not converted implicitly or explicitly to any other type.

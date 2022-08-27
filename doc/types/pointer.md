@@ -1,6 +1,7 @@
-# Golang Pointers
+# pointers
 
-Go has pointers. A pointer holds the memory address of a value.
+Go has pointers.
+A pointer holds the memory address of a value.
 
 The type `*T` is a pointer to a `T` value.
 Its zero value is nil.
