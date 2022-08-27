@@ -1,1 +1,1 @@
-# GoLang learing adventures
+# GoLang learning adventures
