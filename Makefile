@@ -1,8 +1,12 @@
 
 
-doc:
+deps:
+	go install -v golang.org/x/tools/cmd/godoc@latest
+.PHONY: deps
+
+doc: deps
+	open http://localhost:8001
 	godoc -http=:8001
-	open localhost:8001
 .PHONY: doc
 
 test:
