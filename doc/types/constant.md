@@ -1,4 +1,4 @@
-# contstants
+# contstant
 
 Constants are declared like variables, but with the const keyword.
 
