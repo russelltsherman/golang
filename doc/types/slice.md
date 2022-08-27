@@ -1,8 +1,9 @@
 # slices
 
-Slices are like references to arrays
-
-Slices are zero indexed
+a slice:
+  is a reference type
+  references an array
+  zero indexed
 
 A slice does not store any data, it just describes a section of an underlying array.
 
