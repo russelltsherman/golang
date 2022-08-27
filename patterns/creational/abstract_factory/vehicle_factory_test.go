@@ -1,4 +1,4 @@
-// +build all_tests pattern_tests
+//go:build all_tests || pattern_tests
 
 package abstract_factory
 
