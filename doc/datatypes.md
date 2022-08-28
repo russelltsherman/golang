@@ -8,7 +8,8 @@ In Go language, the type is divided into four categories which are as follows:
 | Basic type     | Numbers, strings, and booleans come under this category.                  |
 | Aggregate type | Array and structs come under this category.                               |
 | Reference type | Pointers, slices, maps, functions, and channels come under this category. |
-| Interface type |
+| Interface type | A custom time which defines minimum spec for parameter substitution        |
+| Value type     | bool, float, int, string, and struct come under this category              |
 
 Go has three basic data types:
 
