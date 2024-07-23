@@ -1,0 +1,87 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: './api'
+    environment:
+      ENV: LOCAL
+      PGUSER: ${DBUSER}
+      PGHOST: ${DBHOST}
+      PGDATABASE: ${DBDATABASE}
+      PGPORT: ${DBPORT}
+      PGPASSWORD: ${DBPASSWORD}
+      REDISPORT: ${REDISPORT}
+      REDISHOST: ${REDISHOST}
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - '4000:8080'
+    restart: on-failure
+    volumes:
+      - /app/node_modules
+      - ./api:/app
+
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: './client'
+    depends_on:
+      - api
+    ports:
+      - '3000:3000'
+    restart: on-failure
+    volumes:
+      - ./client/public:/app/public
+      - ./client/src:/app/src
+
+  nginx:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    depends_on:
+      - api
+      - client
+    ports:
+      - '3050:80'
+    restart: always
+
+  pgadmin:
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${DBADMINEMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${DBPASSWORD}
+    depends_on:
+      - postgres
+    image: dpage/pgadmin4
+    ports:
+      - "8888:80"
+    restart: always
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json
+
+  postgres:
+    environment:
+      POSTGRES_USER: ${DBUSER}
+      POSTGRES_PASSWORD: ${DBPASSWORD}
+      POSTGRES_DB: ${DBDATABASE}
+    image: 'postgres:latest'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
+volumes:
+  postgres-data:
+  pgadmin-data:
+  redis-data:

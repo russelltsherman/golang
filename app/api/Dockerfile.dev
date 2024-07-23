@@ -1,0 +1,8 @@
+FROM golang:latest
+ENV GO111MODULE=on
+WORKDIR /app
+COPY ./go.mod .
+RUN go mod download
+RUN go install github.com/gravityblast/fresh@latest
+COPY . .
+CMD ["fresh"]
