@@ -1,0 +1,117 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: './api'
+    environment:
+      ENV: LOCAL
+      PGUSER: ${DBUSER}
+      PGHOST: ${DBHOST}
+      PGDATABASE: ${DBDATABASE}
+      PGPORT: ${DBPORT}
+      PGPASSWORD: ${DBPASSWORD}
+      REDISPORT: ${REDISPORT}
+      REDISHOST: ${REDISHOST}
+    depends_on:
+      - db
+      - cache
+    ports:
+      - ${APIPORT}:8080
+    restart: on-failure
+    volumes:
+      - api-data:/app/node_modules
+      - ./api:/app
+
+  client:
+    build:
+      dockerfile: Dockerfile.dev
+      context: './client'
+    depends_on:
+      - api
+    ports:
+      - ${CLIENTPORT}:3000
+    restart: on-failure
+    volumes:
+      - ./client/public:/app/public
+      - ./client/src:/app/src
+
+  nginx:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    depends_on:
+      - api
+      - client
+    ports:
+      - '3050:80'
+    restart: always
+
+  pgadmin:
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${DBADMINEMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${DBPASSWORD}
+    configs:
+      - source: servers.json
+        target: /pgadmin4/servers.json
+      - source: pgpass
+        target: /var/lib/pgadmin/storage/${DBADMINDIR}/.pgpass
+    depends_on:
+      - db
+    entrypoint: |
+      /bin/sh -c "chown pgadmin:root /var/lib/pgadmin/storage/${DBADMINDIR}/.pgpass; chmod 600 /var/lib/pgadmin/storage/${DBADMINDIR}/.pgpass; /entrypoint.sh;"
+    image: dpage/pgadmin4
+    ports:
+      - ${PGADMINPORT}:80
+    restart: always
+    user: root
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  db:
+    environment:
+      POSTGRES_USER: ${DBUSER}
+      POSTGRES_PASSWORD: ${DBPASSWORD}
+      POSTGRES_DB: ${DBDATABASE}
+    image: postgres:latest
+    ports:
+      - ${DBPORT}:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+
+  # does not appear to be respecting the requirepass flag
+  cache:
+    command: redis-server --save 20 1 --loglevel ${REDISLOGLEVEL} --port ${REDISPORT} --requirepass ${REDISPASSWORD}
+    image: redis:7.2-alpine
+    ports:
+      - ${REDISPORT}:6379
+    volumes:
+      - cache-data:/data
+
+configs:
+  pgpass:
+    content: db:${DBPORT}:*:${DBUSER}:${DBPASSWORD}
+  servers.json:
+    content: |
+      {
+        "Servers": {
+          "1": {
+            "Group": "Servers",
+            "Host": "db",
+            "MaintenanceDB": "postgres",
+            "Name": "Docker Compose",
+            "PassFile": "/.pgpass",
+            "Port": ${DBPORT},
+            "SSLMode": "prefer",
+            "Username": "${DBUSER}"
+          }
+        }
+      }
+
+volumes:
+  api-data:
+  db-data:
+  cache-data:
+  pgadmin-data:
