@@ -11,7 +11,6 @@ package main
 import "fmt"
 
 func main() {
-
     // str variable which stores strings
    str := "GeeksforGeeks"
 

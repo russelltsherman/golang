@@ -17,8 +17,7 @@ The Decision making statements of Go programming are:
 
 ```go
 if (condition) {
-   // Statements to execute if
-   // condition is true
+   // execute if condition is true
 }
 ```
 
@@ -26,11 +25,9 @@ if (condition) {
 
 ```go
 if (condition) {
-    // Executes this block if
-    // condition is true
+    // Executes this block if condition is true
 } else {
-    // Executes this block if
-    // condition is false
+    // Executes this block if condition is false
 }
 ```
 
@@ -38,13 +35,10 @@ if (condition) {
 
 ```go
 if (condition_1) {
-     // this block will execute
-     // when condition_1 is true
+     // execute when condition_1 is true
 } else if (condition_2) {
-    // this block will execute
-    // when condition2 is true
+    // execute when condition2 is true
 } else {
-    // this block will execute when none
-    // of the condition is true
+    // execute when neither condition is true
 }
 ```

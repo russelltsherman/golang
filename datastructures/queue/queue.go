@@ -19,3 +19,19 @@ func (q *Queue) Dequeue() int {
 	q.items = q.items[1:]
 	return item
 }
+
+// Queue structure using go channel
+type QueueC struct {
+	items chan int
+}
+
+// Enqueue add an item to the queue
+func (q *QueueC) Enqueue(i int) {
+	q.items <- i
+}
+
+// Dequeue remove an item from the queue
+func (q *QueueC) Dequeue() int {
+	// no provision for empty channel
+	return <-q.items
+}

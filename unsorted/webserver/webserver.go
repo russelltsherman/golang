@@ -3,6 +3,7 @@ package webserver
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -68,14 +69,11 @@ func main() {
 	if len(arguments) != 1 {
 		PORT = ":" + arguments[1]
 	}
-	fmt.Println("Using port number: ", PORT)
+
 	http.HandleFunc("/time", timeHandler)
 	http.HandleFunc("/getdata", getData)
 	http.HandleFunc("/", myHandler)
 
-	err := http.ListenAndServe(PORT, nil)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	fmt.Println("Starting server at port", PORT)
+	log.Fatal(http.ListenAndServe(PORT, nil))
 }

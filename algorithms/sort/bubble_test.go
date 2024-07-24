@@ -1,3 +1,4 @@
+//go:build all_tests || algorythm_tests
 // +build all_tests algorythm_tests
 
 package sort
@@ -9,13 +10,13 @@ import (
 )
 
 // Hook up gocheck into the "go test" runner.
-func TestBubbleSort(t *testing.T) { TestingT(t) }
+func TestBubble(t *testing.T) { TestingT(t) }
 
 type BubbleSortSuite struct{}
 
 var _ = Suite(&BubbleSortSuite{})
 
-func (s *BubbleSortSuite) TestBubbleSort(c *C) {
+func (s *BubbleSortSuite) TestBubble(c *C) {
 	specs := []struct {
 		items    []int
 		expected []int

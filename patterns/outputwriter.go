@@ -5,4 +5,4 @@ import (
 	"os"
 )
 
-var outputWriter io.Writer = os.Stdout // modified during testing
+var OutputWriter io.Writer = os.Stdout // modified during testing

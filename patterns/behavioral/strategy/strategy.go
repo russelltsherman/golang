@@ -2,7 +2,7 @@ package patterns
 
 import (
 	"fmt"
-	"os"
+	"golang/patterns"
 )
 
 // Strategy defines the interface for the strategy to execute.
@@ -11,8 +11,7 @@ type Strategy interface {
 }
 
 // strategyA defines an implementation of a Strategy to execute.
-type strategyA struct {
-}
+type strategyA struct{}
 
 // NewStrategyA creates a new instance of strategy A.
 func NewStrategyA() Strategy {
@@ -21,12 +20,11 @@ func NewStrategyA() Strategy {
 
 // Execute executes strategy A.
 func (s *strategyA) Execute() {
-	fmt.Fprintf(os.Stdout, "executing strategy A\n")
+	fmt.Fprintf(patterns.OutputWriter, "executing strategy A\n")
 }
 
 // strategyB defines an implementation of a Strategy to execute.
-type strategyB struct {
-}
+type strategyB struct{}
 
 // NewStrategyB creates a new instance of strategy B.
 func NewStrategyB() Strategy {
@@ -35,7 +33,7 @@ func NewStrategyB() Strategy {
 
 // Execute executes strategy B.
 func (s *strategyB) Execute() {
-	fmt.Fprintf(os.Stdout, "executing strategy B\n")
+	fmt.Fprintf(patterns.OutputWriter, "executing strategy B\n")
 }
 
 // Context defines a context for executing a strategy.
