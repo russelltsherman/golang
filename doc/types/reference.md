@@ -12,3 +12,4 @@ because copies of reference type values both reference the same value memory add
 * channel
 * pointer
 * function
+* channel

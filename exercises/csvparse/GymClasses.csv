@@ -1,0 +1,22 @@
+ID,Gym ID,Class Name,Class Categories,First Time Special,Remaining Slots,Class Freqency,InstructorID,Instructor Name
+1234154,4666,Barbell Club ,weightlifting; advanced ,FALSE,7,weekly,467,Kate
+1234153,4674,Yoga for Athletes ,yoga; relaxing,FALSE,8,monthly,470,Anthony
+1234152,4660,Pilates for Inflexible People,pilates; beginner_friendly,FALSE,3,monthly,467,Kate
+1234151,4660,Hangover Yoga,yoga; relaxing; beginner_friendly,FALSE,2,monthly,467,Kate
+1234150,4660,Fight Your Mother,boxing; general_fitness; full_body_workout,FALSE,3,monthly,467,Kate
+1234149,4668,UFC Boxing,boxing; general_fitness; full_body_workout,FALSE,9,weekly,345,Penn
+1234148,4668,HIIT Hits ,general_fitness; full_body_workout; circuit_training,TRUE,5,weekly,345,Penn
+1234147,4668,Zoomba ,dance; beginner_friendly,TRUE,11,weekly,459,Portia
+1234146,4666,Barbell Club ,weightlifting; advanced ,FALSE,4,weekly,467,Kate
+1234145,4666,Weightlifting 101 ,weightlifting; beginner_friendly,TRUE,12,weekly,462,Rose
+1234144,4660,Washboard Abs,core_workout; general_fitness ,FALSE,4,monthly,461,Prudence
+1234143,4661,Hot Yoga ,yoga,TRUE,6,weekly,460,Cresida
+1234142,4661,Power Yoga,yoga; advanced ,TRUE,5,weekly,459,Portia
+1234141,4661,Yogalates ,yoga; pilates ,TRUE,3,weekly,458,Violet
+1234140,4661,Restorative Yoga,yoga; relaxing; beginner_friendly,TRUE,2,weekly,457,Benedict
+1234139,4660,Bootcamp ,general_fitness; full_body_workout,TRUE,17,weekly,456,Colin
+1234138,4660,Pilates for Inflexible People,pilates; beginner_friendly,FALSE,3,monthly,467,Kate
+1234137,4660,Hangover Yoga,yoga; relaxing; beginner_friendly,FALSE,6,monthly,467,Kate
+1234136,4657,Pilates III ,pilates,FALSE,14,weekly,345,Penn
+1234135,4657,Pilates II,pilates,FALSE,4,weekly,567,Eloise
+1234134,4657,Pilates I ,pilates; beginner_friendly,TRUE,3,weekly,567,Eloise
